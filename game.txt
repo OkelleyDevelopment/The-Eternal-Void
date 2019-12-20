@@ -1,0 +1,57 @@
+    private void playerAttackGhoul(){
+
+        int playerDamage = player.currentWeapon.damage;
+
+        enemy.hp -= playerDamage;
+
+        ui.mainTextArea.setText("You attacked the " + enemy.name + " and dealt " + playerDamage + " damage!");
+
+        ui.choice1.setText(">");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+
+        if(enemy.hp > 0) {
+            game.nextPos1 = "ghoulAttack";
+            game.nextPos2 = "";
+            game.nextPos3 = "";
+            game.nextPos4 = "";
+        }
+        else if(enemy.hp < 0){
+            game.nextPos1 = "GasStation";
+            game.nextPos2 = "";
+            game.nextPos3 = "";
+            game.nextPos4 = "";
+        }
+    }
+
+
+    private void ghoulAttack(){
+
+        int enemyDamage = enemy.attack;
+
+        ui.mainTextArea.setText(enemy.atkMsg + " You received " + enemyDamage + "!");
+
+        player.hp = player.hp - enemyDamage;
+        ui.hpNumberLabel.setText("" + player.hp);
+
+        ui.choice1.setText(">");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+
+        if(player.hp > 0) {
+            game.nextPos1 = "ghoulFight";
+            game.nextPos2 = "";
+            game.nextPos3 = "";
+            game.nextPos4 = "";
+        }
+        else if(player.hp < 0){
+            game.nextPos1 = "Lose";
+            game.nextPos2 = "";
+            game.nextPos3 = "";
+            game.nextPos4 = "";
+        }
+
+
+    }
